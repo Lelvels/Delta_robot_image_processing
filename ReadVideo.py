@@ -1,11 +1,17 @@
 # Program To Read video
 # and Extract Frames
 import cv2
+import math
 # Function to extract frames
+
+def transform_to_arduino_points(x, y, offset_origin):
+    x_img, y_img = x + offset_origin[0], y + offset_origin[1]
 
 def click_event(event, x, y, flags, params):
     if event == cv2.EVENT_LBUTTONDOWN:
+        print("My points: ")
         print(x, ' ', y)
+        print("Arduino points:")
     if event==cv2.EVENT_RBUTTONDOWN:
         print(x, ' ', y)
     return
@@ -27,7 +33,7 @@ def draw_grid(image, x_start, x_end, y_start, y_end, grid_width, grid_height):
         start_point = (x_start, y_start + crop_img_height*idx)
         end_point = (x_end, y_start + crop_img_height*idx)
         grid_image = cv2.line(grid_image, start_point, end_point, color, thickness)
-    # #vertical
+    #vertical
     for idy in range(cols):
         start_point = (x_start + idy*crop_img_width, y_start)
         end_point = (x_start + idy*crop_img_width, y_end)
@@ -41,9 +47,11 @@ def FrameCapture():
     while success:
         success, frame = vidObj.read()
         x_start, x_end, y_start, y_end = 0, 640, 130, 258
+        # process_masked_image = frame[y_start:y_end, y_start, y_end]
+        frame = frame[y_start:y_end, x_start:x_end, :]
         grid_height, grid_width = 64, 64
         grid_frame = draw_grid(image=frame, 
-                x_start=x_start, x_end=x_end, y_start=y_start, y_end=y_end,
+                x_start=0, x_end=frame.shape[1], y_start=0, y_end=frame.shape[0],
                 grid_height=grid_height, grid_width=grid_width)
         cv2.imshow('frame', grid_frame)
         cv2.setMouseCallback('frame', click_event)
