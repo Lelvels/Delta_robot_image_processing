@@ -49,8 +49,8 @@ def crop_and_save_picture(image, x_start, x_end, y_start, y_end, grid_width, gri
             x2 = (j + 1) * grid_width
             # Cắt vật thể và lưu vào ảnh nhỏ
             small_img = img[y1:y2, x1:x2]
-            path = 'D:/Code/MachineLearning/HatDieu/data/crop_images2/'
-            cv2.imwrite(path+"crop_image_" + str(i*j)
+            path = 'D:/Code/MachineLearning/HatDieu/data/all_crop_images/crop_images11/'
+            cv2.imwrite(path+"crop_image_" + str(i) + "_" + str(j)
                         + "_" +str(index)+ ".png", small_img)
             crop_images_idx += 1
     print("[+] Saving: " + str(cols*rows) + " images with index: " + str(index))
@@ -66,7 +66,7 @@ def getCalibParams():
 
 
 def FrameCapture():
-    vidObj = cv2.VideoCapture(1)
+    vidObj = cv2.VideoCapture(0)
     vidObj.set(cv2.CAP_PROP_FPS, 10)  # Đặt số khung hình trên giây
     if vidObj is None or not vidObj.isOpened():
         print('Warning: unable to open video source: ', vidObj)
@@ -80,21 +80,21 @@ def FrameCapture():
     image_count = 0
     while success:
         success, frame = vidObj.read()
-        #frame_count = frame_count + 1
-        #if frame_count % (interval*fps) == 0:
-        mtx, dist = getCalibParams()
-        # undistort
-        h,  w = frame.shape[:2]
-        newcameramtx, roi = cv2.getOptimalNewCameraMatrix(mtx, dist, (w,h), 1, (w,h))
-        dst = cv2.undistort(frame, mtx, dist, None, newcameramtx)
-        # crop the image
-        x, y, w, h = roi
-        frame = dst[y:y+h, x:x+w]
+        # #frame_count = frame_count + 1
+        # #if frame_count % (interval*fps) == 0:
+        # mtx, dist = getCalibParams()
+        # # undistort
+        # h,  w = frame.shape[:2]
+        # newcameramtx, roi = cv2.getOptimalNewCameraMatrix(mtx, dist, (w,h), 1, (w,h))
+        # dst = cv2.undistort(frame, mtx, dist, None, newcameramtx)
+        # # crop the image
+        # x, y, w, h = roi
+        # frame = dst[y:y+h, x:x+w]
         #print(frame.shape)
         
         #proccess area
-        x_start, x_end, y_start, y_end = 128, 512, 5, 165
-        grid_height, grid_width = 40, 64
+        x_start, x_end, y_start, y_end = 0, 640, 210, 338
+        grid_height, grid_width = 64, 64
         
         grid_frame = draw_grid(image=frame, 
                 x_start=x_start, x_end=x_end, y_start=y_start, y_end=y_end,

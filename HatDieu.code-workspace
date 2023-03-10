@@ -1,0 +1,17 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"path": "../Self-driving cars/Section6"
+		},
+		{
+			"path": "../Machine Learning A-Z"
+		},
+		{
+			"path": "../HOG-SVM-python"
+		}
+	],
+	"settings": {}
+}
