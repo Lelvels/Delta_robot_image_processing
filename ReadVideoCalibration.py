@@ -5,7 +5,7 @@ import yaml
 import numpy as np
 # Function to extract frames
 def FrameCapture():
-    vidObj = cv2.VideoCapture(1)
+    vidObj = cv2.VideoCapture(0)
     count = 0
     success = 1
     with open('calibration/calibration.yaml') as f:
@@ -24,7 +24,8 @@ def FrameCapture():
         x, y, w, h = roi
         dst = dst[y:y+h, x:x+w]
         cv2.imshow('calibresult', dst)
-        #cv2.imwrite("frames/frame%d.jpg" % count, image)
+        print(dst.shape)
+        print(frame.shape)
         count += 1
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break

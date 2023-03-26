@@ -11,6 +11,10 @@
 		},
 		{
 			"path": "../HOG-SVM-python"
+		},
+		{
+			"name": "ESP8266Test",
+			"path": "../../../OneDrive - tngnemo/Documents/PlatformIO/Projects/ESP8266Test"
 		}
 	],
 	"settings": {}

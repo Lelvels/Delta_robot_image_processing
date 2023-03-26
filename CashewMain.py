@@ -6,7 +6,7 @@ from CashewDetector import CashewDetector
 from DeltaCommand import DeltaCommand
 
 if __name__ == '__main__':
-    frame = cv2.imread("data/raw_data/frame_330.png")
+    frame = cv2.imread("data/raw_data/frame_265.png")
     cv2.imshow('frame', frame)
     x_start, x_end, y_start, y_end = 0, 640, 210, 338
     grid_height, grid_width = 64, 64

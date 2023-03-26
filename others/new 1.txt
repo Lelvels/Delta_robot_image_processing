@@ -1,0 +1,8 @@
+Em cần mượn một server như thế này:
+1. Yêu cầu phải có GPU vì đây sẽ là server dùng để xử lý các vấn đề liên quan đến học máy, GPU từ đời RTX2060 trở lên thì càng tốt.
+2. CPU do trên phòng máy có thể cố định nhưng em mong khả năng xử lý của nó ít nhất từ i3 10105F trở lên, vì nếu CPU quá yếu so với
+GPU thì sẽ diễn ra tình trạng nghẽn cổ chai.
+2. Ram tối thiểu là 8GB.
+3. Dung lượng hệ thống là 50GB.
+4. Hệ điều hành cài sẵn là Ubuntu server 20.04.
+5. Thông tin cấp phát liên quan đến server: địa chỉ IP, tên đăng nhập và mật khẩu root của máy.
